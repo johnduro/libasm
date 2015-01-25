@@ -9,6 +9,7 @@ int ft_isascii(int machin);
 int ft_isprint(int machin);
 int ft_isalpha(int machin);
 int ft_puts(const char *s);
+void ft_bzero(void *s, size_t n);
 
 int main() {
 
@@ -64,6 +65,14 @@ int main() {
 	printf("ret = %d\n", ret);
 	ret = ft_puts("what???");
 	printf("ret = %d\n", ret);
+
+	/** FT_BZERO **/
+
+	/* char	s[5] = "yolo\n"; */
+
+	/* printf("%s", s); */
+	/* ft_bzero(s, 5); */
+	/* printf("%s", s); */
 
 	return 0;
 }
