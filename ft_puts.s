@@ -23,7 +23,7 @@ puting:
 	int 0x80
 	cmp eax, -1
 	je error
-	;; mov byte [rdi], 0
+	mov byte [rdi], 0
 	;; mov eax, 1
 	mov rax, rdx
 	pop rdi

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 int _ft_strlen(char *truc);
 int ft_isdigit(int machin);
@@ -58,7 +59,16 @@ int main() {
 	/** FT_PUTS **/
 
 	int ret;
+	char test[5] = "test";
+	char *s = (char *)malloc(5);
+	int i;
+	for (i = 0; i < 5; ++i)
+		s[i] = 'a';
 
+	ret = ft_puts(s);
+	printf("ret = %d\n", ret);
+	ret = ft_puts(test);
+	printf("ret = %d\n", ret);
 	ret = ft_puts("test");
 	printf("ret = %d\n", ret);
 	ret = ft_puts("yolo");
