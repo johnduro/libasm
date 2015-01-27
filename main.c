@@ -59,7 +59,7 @@ int main() {
 	/** FT_PUTS **/
 
 	int ret;
-	char test[5] = "test";
+	char test[7] = "testooo";
 	char *s = (char *)malloc(5);
 	int i;
 	for (i = 0; i < 5; ++i)
@@ -67,12 +67,16 @@ int main() {
 
 	ret = ft_puts(s);
 	printf("ret = %d\n", ret);
+
 	ret = ft_puts(test);
 	printf("ret = %d\n", ret);
+
 	ret = ft_puts("test");
 	printf("ret = %d\n", ret);
+
 	ret = ft_puts("yolo");
 	printf("ret = %d\n", ret);
+
 	ret = ft_puts("what???");
 	printf("ret = %d\n", ret);
 
@@ -86,6 +90,3 @@ int main() {
 
 	return 0;
 }
-
-
-

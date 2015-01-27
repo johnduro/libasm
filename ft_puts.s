@@ -1,31 +1,32 @@
 ; arg0 = di, arg1 = si, arg3 = dx
 
-global ft_puts
+global _ft_puts
 
-ft_puts:
+_ft_puts:
 	push rbx
 	push rdi
-	mov rax, 4
-	mov rbx, 1
-	mov rcx, rdi
-	mov rdx, 0
+	mov rax, 0x2000004			; syscall de write
+	mov rsi, rdi				; arg 1 write
+	mov rdi, 1 					; arg 0 write
+	mov edx, 0					; arg 3 write
+	mov rbx, rsi				; pointeur sur la string pour remplacer le \0
 
 len:
-	cmp byte [rdi], 0
+	cmp byte [rbx], 0
 	je puting
-	inc rdx
-	inc rdi
+	inc edx
+	inc rbx
 	jmp len
 
 puting:
-	inc rdx
-	mov byte [rdi], 10
-	int 0x80
+	inc edx
+	mov byte [rbx], 10
+	syscall
 	cmp eax, -1
 	je error
-	mov byte [rdi], 0
+	mov byte [rbx], 0
 	;; mov eax, 1
-	mov rax, rdx
+	mov eax, edx
 	pop rdi
 	pop rbx
 	ret
@@ -67,4 +68,3 @@ error:
 ;; 	mov rax, rdx
 ;; replace5:
 ;; 	ret
-
