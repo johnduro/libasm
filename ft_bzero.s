@@ -1,8 +1,8 @@
        ;; void bzero(void *s, size_t n);
 
-global ft_bzero
+global _ft_bzero
 
-ft_bzero:
+_ft_bzero:
 	push rbx
 	mov rbx, rdi
 
