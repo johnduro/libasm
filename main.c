@@ -16,6 +16,8 @@ char *ft_strcat(char *s1, char *s2);
 void *ft_memcpy(void *dest, void *src, size_t n);
 void *ft_memset(void *dest, int c, size_t len);
 char *ft_strdup(const char *src);
+int ft_tolower(int c);
+int ft_toupper(int c);
 
 int main() {
 	int ret;
@@ -31,12 +33,12 @@ int main() {
 	(void)test;
 	/** STRLEN **/
 
-	printf("strlen : %d\n", (int)strlen("POPOPOOOO"));
-	printf("asm strlen : %d\n", ft_strlen("POPOPOOOO"));
-	printf("strlen : %d\n", (int)strlen(""));
-	printf("asm strlen : %d\n", ft_strlen(""));
-	printf("strlen : %d\n", (int)strlen(test));
-	printf("asm strlen : %d\n", ft_strlen(test));
+	/* printf("strlen : %d\n", (int)strlen("POPOPOOOO")); */
+	/* printf("asm strlen : %d\n", ft_strlen("POPOPOOOO")); */
+	/* printf("strlen : %d\n", (int)strlen("")); */
+	/* printf("asm strlen : %d\n", ft_strlen("")); */
+	/* printf("strlen : %d\n", (int)strlen(test)); */
+	/* printf("asm strlen : %d\n", ft_strlen(test)); */
 	/* printf("strlen : %d\n", (int)strlen(n)); SEGFAULT */
 	/* printf("asm strlen : %d\n", ft_strlen(n)); SEGFAULT */
 
@@ -168,13 +170,35 @@ int main() {
 
 	/** FT_STRDUP **/
 
-	char sdup[10] = "trololol\0";
-	char *dest;
+	/* char sdup[10] = "trololol\0"; */
+	/* char *dest; */
 
-	dest = ft_strdup(sdup);
-	write(1, dest, 8);
-	write(1, "\n", 1);
-	printf("ft_strdup: %s<\n", dest);
-	free(dest);
+	/* dest = ft_strdup(sdup); */
+	/* write(1, dest, 8); */
+	/* write(1, "\n", 1); */
+	/* printf("ft_strdup: %s<\n", dest); */
+	/* free(dest); */
+
+	/** FT_TOLOWER **/
+
+	char c1 = 'A';
+	char c2 = 'b';
+	char c3 = ';';
+
+	c1 = ft_tolower(c1);
+	c2 = ft_tolower(c2);
+	c3 = ft_tolower(c3);
+	printf("c1: %c\nc2: %c\nc3: %c\n", c1, c2, c3);
+
+	/** FT_TOUPPER **/
+
+	char u1 = 'A';
+	char u2 = 'b';
+	char u3 = ';';
+
+	u1 = ft_toupper(u1);
+	u2 = ft_toupper(u2);
+	u3 = ft_toupper(u3);
+	printf("u1: %u\nu2: %u\nu3: %u\n", u1, u2, u3);
 	return 0;
 }
