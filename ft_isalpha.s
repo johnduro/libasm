@@ -4,27 +4,21 @@
 global _ft_isalpha
 
 _ft_isalpha:
-push rbx ; save les valeurs par defauts sur la stack
-mov	rbx, rdi ; passe l argument sur rbx
-cmp rbx, 65
-jl returnfalse; jl = i < 65
-cmp rbx, 90
-jg _ismin ; jg = i >  90
-jmp returntrue
+	cmp rdi, 65
+	jl ret_false
+	cmp rdi, 90
+	jle ret_true
+	cmp rdi, 97
+	jl ret_false
+	cmp rdi, 122
+	jle ret_true
+	mov eax, 0
+	ret
 
-_ismin:
-cmp rbx, 97
-jl returnfalse ; jl = i < 97
-cmp rbx, 122
-jg returnfalse ; jg = i > 122
-jmp returntrue
+ret_true:
+	mov eax, 1
+	ret
 
-returnfalse:
-mov eax, 0 ; on veut return 0
-pop rbx
-ret
-
-returntrue:
-mov eax, 1 ; on veut return 1
-pop rbx
-ret
+ret_false:
+	mov eax, 0
+	ret

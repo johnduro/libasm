@@ -4,20 +4,13 @@
 global _ft_isascii
 
 _ft_isascii:
-push rbx ; save les valeurs par defauts sur la stack
-mov	rbx, rdi ; passe l argument sur rbx
-cmp rbx, 0
-jl returnfalse; jl = jump strictly less than 0
-cmp rbx, 127
-jg returnfalse; jg = greater than 127
-jmp returntrue
+	cmp rdi, 0
+	jl ret_false
+	cmp rdi, 127
+	jg ret_false
+	mov eax, 1
+	ret
 
-returnfalse:
-mov eax, 0 ; on veut return 0
-pop rbx
-ret
-
-returntrue:
-mov eax, 1 ; on veut return 1
-pop rbx
-ret
+ret_false:
+	mov eax, 0
+	ret

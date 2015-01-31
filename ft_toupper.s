@@ -4,20 +4,13 @@
 global _ft_toupper
 
 _ft_toupper:
-	cmp byte [rdi], 96
-	jg is_greater
-	jmp unchanged
-
-is_greater:
-	cmp byte [rdi], 123
-	jl is_lower
-	jmp unchanged
-
-is_lower:
-	sub byte [rdi], 32
 	mov rax, rdi
+	cmp eax, 97
+	jl unchanged
+	cmp eax, 122
+	jg unchanged
+	sub eax, 32
 	ret
 
 unchanged:
-	mov rax, rdi
 	ret

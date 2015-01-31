@@ -4,12 +4,16 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/uio.h>
 
 int ft_strlen(char *truc);
 int ft_isdigit(int machin);
 int ft_isascii(int machin);
 int ft_isprint(int machin);
 int ft_isalpha(int machin);
+int ft_isalnum(int machin);
 int ft_puts(const char *s);
 void ft_bzero(void *s, size_t n);
 char *ft_strcat(char *s1, char *s2);
@@ -18,8 +22,10 @@ void *ft_memset(void *dest, int c, size_t len);
 char *ft_strdup(const char *src);
 int ft_tolower(int c);
 int ft_toupper(int c);
+void ft_cat(int fd);
 
-int main() {
+int main(int argc, char ** argv)
+{
 	int ret;
 	char test[7] = "testooo";
 	/* char *s = (char *)malloc(5); */
@@ -31,6 +37,8 @@ int main() {
 	(void)ret;
 	(void)n;
 	(void)test;
+	(void)argc;
+	(void)argv;
 	/** STRLEN **/
 
 	/* printf("strlen : %d\n", (int)strlen("POPOPOOOO")); */
@@ -44,29 +52,29 @@ int main() {
 
 	/** ISDIGIT **/
 
-	// printf("isdigit : %d\n", isdigit('a'));
-	// printf("isdigit : %d\n", isdigit('9'));
-	// printf("asm isdigit : %d\n", ft_isdigit('a'));
-	// printf("asm isdigit : %d\n", ft_isdigit('9'));
+	/* printf("isdigit : %d\n", isdigit('a')); */
+	/* printf("isdigit : %d\n", isdigit('9')); */
+	/* printf("asm isdigit : %d\n", ft_isdigit('a')); */
+	/* printf("asm isdigit : %d\n", ft_isdigit('9')); */
 
 	/** ISASCII **/
 
-	// printf("isascii : %d\n", isascii(-1));
-	// printf("isascii : %d\n", isascii(' '));
-	// printf("asm isascii : %d\n", ft_isascii(-1));
-	// printf("asm isascii : %d\n", ft_isascii(' '));
+	/* printf("isascii : %d\n", isascii(-1)); */
+	/* printf("isascii : %d\n", isascii(' ')); */
+	/* printf("asm isascii : %d\n", ft_isascii(-1)); */
+	/* printf("asm isascii : %d\n", ft_isascii(' ')); */
 
 
 	/** ISPRINT **/
 
-	// printf("isprint : %d\n", isprint(-1));
-	// printf("isprint : %d\n", isprint(' '));
-	// printf("isprint : %d\n", isprint('~'));
-	// printf("isprint : %d\n", isprint(127));
-	// printf("asm isprint : %d\n", ft_isprint(-1));
-	// printf("asm isprint : %d\n", ft_isprint(' '));
-	// printf("asm isprint : %d\n", ft_isprint('~'));
-	// printf("asm isprint : %d\n", ft_isprint(127));
+	/* printf("isprint : %d\n", isprint(-1)); */
+	/* printf("isprint : %d\n", isprint(' ')); */
+	/* printf("isprint : %d\n", isprint('~')); */
+	/* printf("isprint : %d\n", isprint(127)); */
+	/* printf("asm isprint : %d\n", ft_isprint(-1)); */
+	/* printf("asm isprint : %d\n", ft_isprint(' ')); */
+	/* printf("asm isprint : %d\n", ft_isprint('~')); */
+	/* printf("asm isprint : %d\n", ft_isprint(127)); */
 
 	/** ISALPHA **/
 
@@ -78,6 +86,19 @@ int main() {
 	/* printf("asm isalpha : %d\n", ft_isalpha(' ')); */
 	/* printf("asm isalpha : %d\n", ft_isalpha('a')); */
 	/* printf("asm isalpha : %d\n", ft_isalpha('Z')); */
+
+	/** ISALNUM **/
+
+	/* printf("isalnum : %d\n", isalnum('[')); */
+	/* printf("isalnum : %d\n", isalnum(' ')); */
+	/* printf("isalnum : %d\n", isalnum('a')); */
+	/* printf("isalnum : %d\n", isalnum('Z')); */
+	/* printf("isalnum : %d\n", isalnum('4')); */
+	/* printf("asm isalnum : %d\n", ft_isalnum('[')); */
+	/* printf("asm isalnum : %d\n", ft_isalnum(' ')); */
+	/* printf("asm isalnum : %d\n", ft_isalnum('a')); */
+	/* printf("asm isalnum : %d\n", ft_isalnum('Z')); */
+	/* printf("asm isalnum : %d\n", ft_isalnum('4')); */
 
 	/** FT_PUTS **/
 	/* printf("TEST FT-PUTS\n"); */
@@ -181,24 +202,65 @@ int main() {
 
 	/** FT_TOLOWER **/
 
-	char c1 = 'A';
-	char c2 = 'b';
-	char c3 = ';';
+	/* char c1 = 'A'; */
+	/* char c2 = 'b'; */
+	/* char c3 = ';'; */
 
-	c1 = ft_tolower(c1);
-	c2 = ft_tolower(c2);
-	c3 = ft_tolower(c3);
-	printf("c1: %c\nc2: %c\nc3: %c\n", c1, c2, c3);
+	/* printf("avant tolower:\nc1: %c\nc2: %c\nc3: %c\n", c1, c2, c3); */
+	/* c1 = ft_tolower(c1); */
+	/* c2 = ft_tolower(c2); */
+	/* c3 = ft_tolower(c3); */
+	/* printf("apres :\nc1: %c\nc2: %c\nc3: %c\n", c1, c2, c3); */
 
 	/** FT_TOUPPER **/
 
-	char u1 = 'A';
-	char u2 = 'b';
-	char u3 = ';';
+	/* char u1 = 'A'; */
+	/* char u2 = 'b'; */
+	/* char u3 = ';'; */
 
-	u1 = ft_toupper(u1);
-	u2 = ft_toupper(u2);
-	u3 = ft_toupper(u3);
-	printf("u1: %u\nu2: %u\nu3: %u\n", u1, u2, u3);
-	return 0;
+	/* printf("avant toupper:\nu1: %c\nu2: %c\nu3: %c\n", u1, u2, u3); */
+	/* u1 = ft_toupper(u1); */
+	/* u2 = ft_toupper(u2); */
+	/* u3 = ft_toupper(u3); */
+	/* printf("apres :\nu1: %c\nu2: %c\nu3: %c\n", u1, u2, u3); */
+
+	/** FT_CAT **/
+
+	/* int buffsize = 512; */
+	/* char buffr[512]; */
+	/* int retrd; */
+
+	printf("ca marche ?\n");
+	ft_cat(-1);
+	/* retrd = read(5, buffr, buffsize); */
+	/* printf("ret de read : %d\n", retrd); */
+	printf("--- yolo ca marche ---\n");
+
+	if (argc < 2)
+	{
+		ft_cat(0);
+		return (0);
+	}
+	else
+	{
+		int i = 1;
+		while (i < argc)
+		{
+			int fd;
+
+			if ((fd = open(argv[i], O_RDONLY)) > 0)
+			{
+				printf("open ok \n");
+				ft_cat(fd);
+				if (close(fd) < 0)
+				{
+					return (-3);
+				}
+			}
+			else
+				printf("%s is not a valid file\n", argv[i]);
+			i++;
+		}
+	}
+	return (0);
 }

@@ -4,21 +4,13 @@
 global _ft_tolower
 
 _ft_tolower:
-	mov r11, rdi
-	cmp r11, 64
-	jg is_greater
-	jmp unchanged
-
-is_greater:
-	cmp r11, 91
-	jl is_lower
-	jmp unchanged
-
-is_lower:
-	add byte [r11], 32
-	mov rax, r11
+	mov rax, rdi
+	cmp eax, 65
+	jl unchanged
+	cmp eax, 90
+	jg unchanged
+	add eax, 32
 	ret
 
 unchanged:
-	mov rax, r11
 	ret

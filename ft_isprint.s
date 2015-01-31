@@ -4,20 +4,13 @@
 global _ft_isprint
 
 _ft_isprint:
-push rbx ; save les valeurs par defauts sur la stack
-mov	rbx, rdi ; passe l argument sur rbx
-cmp rbx, 32
-jl returnfalse; JL = jump less than 32
-cmp rbx, 126
-jg returnfalse; JG = greater than 126
-jmp returntrue
+	cmp rdi, 32
+	jl ret_false
+	cmp rdi, 126
+	jg ret_false
+	mov eax, 1
+	ret
 
-returnfalse:
-mov eax, 0 ; on veut return 0
-pop rbx
-ret
-
-returntrue:
-mov eax, 1 ; on veut return 1
-pop rbx
-ret
+ret_false:
+	mov eax, 0
+	ret
