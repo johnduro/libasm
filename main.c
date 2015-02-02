@@ -231,7 +231,7 @@ int main(int argc, char ** argv)
 	/* int retrd; */
 
 	printf("ca marche ?\n");
-	ft_cat(-1);
+	ft_cat(5);
 	/* retrd = read(5, buffr, buffsize); */
 	/* printf("ret de read : %d\n", retrd); */
 	printf("--- yolo ca marche ---\n");

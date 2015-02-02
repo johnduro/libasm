@@ -25,7 +25,10 @@ cat_loop:
 	pop rdi
 	cmp eax, -1
 	je ft_return
-	jmp cat_loop
+	cmp rdi, 0
+	je cat_loop
+	cmp rax, 8192
+	je cat_loop
 
 ft_return:
 	ret
