@@ -9,7 +9,7 @@ global _ft_strcat
 _ft_strcat:
 	push rbx
 	mov rbx, rsi
-	mov rax, rsi
+	mov rax, rdi
 	mov rcx, 0
 
 get_end:
