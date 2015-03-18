@@ -13,7 +13,7 @@ _ft_cat:
 
 cat_loop:
 	mov rax, 0x2000003 ;read
-	mov rdx, bufsize
+	mov rdx, 8192
 	syscall
 	cmp eax, 0
 	jle ft_return
@@ -28,15 +28,12 @@ cat_loop:
 	cmp rdi, 0
 	je cat_loop
 	cmp rax, 8192
-	je cat_loop
+	jge cat_loop
 
 ft_return:
 	ret
 
 section .data
-
-bufsize:
-	dd 8192	;8192
 
 buf:
 	times 8192 db 0
