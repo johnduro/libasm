@@ -18,7 +18,9 @@ _ft_strdup:
 
 call_malloc:
 	push rcx
+	push rdi
 	call _malloc
+	pop rdi
 	pop rcx
 	test rax, rax
 	jz null

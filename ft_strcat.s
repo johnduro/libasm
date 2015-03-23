@@ -26,6 +26,7 @@ get_len:
 	jmp get_len
 
 copy:
+	inc rcx
 	rep movsb
 	pop rbx
 	ret

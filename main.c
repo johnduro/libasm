@@ -27,7 +27,7 @@ void ft_cat(int fd);
 int main(int argc, char ** argv)
 {
 	int ret;
-	char test[7] = "testooo";
+	char test[10] = "testooo";
 	/* char *s = (char *)malloc(5); */
 	char *n = NULL;
 	/* int i; */
@@ -41,12 +41,12 @@ int main(int argc, char ** argv)
 	(void)argv;
 	/** STRLEN **/
 
-	/* printf("strlen : %d\n", (int)strlen("POPOPOOOO")); */
-	/* printf("asm strlen : %d\n", ft_strlen("POPOPOOOO")); */
-	/* printf("strlen : %d\n", (int)strlen("")); */
-	/* printf("asm strlen : %d\n", ft_strlen("")); */
-	/* printf("strlen : %d\n", (int)strlen(test)); */
-	/* printf("asm strlen : %d\n", ft_strlen(test)); */
+	printf("strlen : %d\n", (int)strlen("POPOPOOOO"));
+	printf("asm strlen : %d\n", ft_strlen("POPOPOOOO"));
+	printf("strlen : %d\n", (int)strlen(""));
+	printf("asm strlen : %d\n", ft_strlen(""));
+	printf("strlen : %d\n", (int)strlen(test));
+	printf("asm strlen : %d\n", ft_strlen(test));
 	/* printf("strlen : %d\n", (int)strlen(n)); SEGFAULT */
 	/* printf("asm strlen : %d\n", ft_strlen(n)); SEGFAULT */
 
@@ -238,6 +238,7 @@ int main(int argc, char ** argv)
 
 	if (argc < 2)
 	{
+		printf("read sur 0 :\n");
 		ft_cat(0);
 		return (0);
 	}
